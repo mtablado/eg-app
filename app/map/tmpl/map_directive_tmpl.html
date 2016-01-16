@@ -1,0 +1,53 @@
+<div id="map_canvas" ng-controller="MapCtrl as map">
+
+  <div class="btn-toolbar" role="toolbar">
+    <div class="btn-group" role="group">
+      <button ng-click="map.moveToFirm()" class="btn btn-default">El Garabato</button>
+      <div class="btn-group">
+        <button type="button" class="btn btn-default dropdown-toggle"
+                data-toggle="dropdown">
+          Clientes
+          <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+          <li><a href="#" ng-click="map.moveToFirm()">Dafisa</a></li>
+          <li><a href="#" ng-click="map.moveToFirm()">Palacio Moratalla</a></li>
+        </ul>
+      </div>
+      <div class="btn-group">
+        <button type="button" class="btn btn-default dropdown-toggle"
+                data-toggle="dropdown">
+          Gasolineras
+          <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+          <li><a href="#" ng-click="map.moveToFirm()">La Lagunilla</a></li>
+          <li><a href="#" ng-click="map.moveToFirm()">Repsol</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="btn-group" role="group">
+      <button type="button" class="btn btn-default"
+          ng-click="map.zoomIn()">
+        <span class="glyphicon glyphicon glyphicon-zoom-in"></span>
+      </button>
+      <button type="button" class="btn btn-default"
+          ng-click="map.zoomOut()">
+        <span class="glyphicon glyphicon glyphicon-zoom-out"></span>
+      </button>
+    </div>
+  </div>
+
+  <br/>
+
+  <ui-gmap-google-map center="map.center" zoom="map.zoom" options="map.options" control="gmapController">
+
+    <ui-gmap-layer type="TrafficLayer" show="map.showTraffic"></ui-gmap-layer>
+    <ui-gmap-layer namespace="weather" type="WeatherLayer" show="map.showWeather"></ui-gmap-layer>
+    <ui-gmap-layer namespace="visualization" type="HeatmapLayer" show="map.showHeat" onCreated="map.heatLayerCallback"></ui-gmap-layer>
+
+    <!--ui-gmap-marker coords="map.staticMarker.coords" options="map.staticMarker.options" idKey="map.staticMarker.id" >
+    </ui-gmap-marker-->
+    <ui-gmap-markers models="map.markers" coords="'coords'" options="'options'"></ui-gmap-markers>
+  </ui-gmap-google-map>
+</div>

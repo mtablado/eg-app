@@ -1,0 +1,40 @@
+<li class="list-group-item">
+  <div class="row">
+    <div class="col-xs-7 col-sm-6 col-md-7">
+      <p><strong>{{truck.licensePlate}}</strong><br/>{{truck.driver.name}}</p>
+    </div>
+    <div class="col-xs-5 col-sm-6 col-md-5 hidden-xs">
+      <div class="btn-toolbar" role="toolbar">
+        <div class="btn-group">
+          <button type="button" class="btn btn-default btn-sm"
+              ng-show="{{truck.followed == true}}" class="ng-hide"
+              ng-click="truckController.switchFollow(truck)">
+            <span class="glyphicon glyphicon glyphicon-map-marker"></span>
+            <span class="hidden-sm-down hidden-xs hidden-sm">Al mapa!</span>
+          </button>
+        </div>
+        <div class="btn-group">
+          <button type="button" class="btn btn-default btn-sm"
+              ng-show="{{truck.followed == true}}" class="ng-hide"
+              ng-click="truckController.switchFollow(truck)">
+            <span class="glyphicon glyphicon-remove"></span>
+            <span class="hidden-sm-down hidden-xs hidden-sm">Ocultar</span>
+          </button>
+          <button type="button" class="btn btn-default btn-sm"
+              ng-show="{{truck.status == 'working' &amp;&amp; truck.followed == false
+                        || truck.status == 'idle'}}" class="ng-hide"
+              ng-click="truckController.switchFollow(truck)">
+            <span class="glyphicon glyphicon-ok"></span>
+            <span class="hidden-sm-down hidden-xs hidden-sm">Seguir</span>
+          </button>
+          <button type="button" class="btn btn-default btn-sm"
+              ng-show="{{truck.status == 'working'}}" class="ng-hide"
+              ng-click="truckController.stopWork(truck)">
+            <span class="glyphicon glyphicon glyphicon-ban-circle"></span>
+            <span class="hidden-sm-down hidden-xs hidden-sm">Parar</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</li>

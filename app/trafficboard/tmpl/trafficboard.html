@@ -1,0 +1,10 @@
+<!-- Traffic Board -->
+<div ng-controller="TrafficBoardCtrl as trafficboard">
+
+  <div class="hidden-xs col-sm-4 col-md-4">
+    <truck-panel trucks="trafficboard.getTrucks()"></truck-panel>
+  </div>
+  <div class="col-xs-12 col-sm-8 col-md-8">
+    <eg-map></eg-map>
+  </div>
+</div>
