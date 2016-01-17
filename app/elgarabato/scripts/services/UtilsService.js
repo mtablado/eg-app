@@ -1,6 +1,8 @@
 angular.module('ElGarabato.Common')
     .service('UtilsService',
         function() {
+          'use strict';
+          
             var service = this;
 
             service.objectToArray = function(content) {

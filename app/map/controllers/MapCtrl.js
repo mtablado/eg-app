@@ -1,10 +1,11 @@
 'use strict';
 
 angular.module('ElGarabato.Map')
-  .controller('MapCtrl', function ($scope, NgMap) {
+  .controller('MapCtrl', function ($scope, NgMap, TrafficService) {
 
     var service = this;
     service.zoom = 10;
+    var trafficService = TrafficService;
 
     //service.home = new google.maps.LatLng(41.850033, -87.6500523);
     service.home = [37.665856, -4.951523];
@@ -57,4 +58,10 @@ angular.module('ElGarabato.Map')
     service.getZoom = function() {
       return service.map.getZoom();
     };
+
+    $scope.$on('centerTruck', function(truck) {
+      console.log('Centering truck event received for truck' + truck);
+      // TODO move to Truck coords
+      service.moveToFirm();
+    });
   });

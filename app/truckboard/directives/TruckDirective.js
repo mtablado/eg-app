@@ -1,6 +1,8 @@
 angular.module('ElGarabato.TruckBoard')
-  .directive('truck', function(){
+  .directive('truck', function(TrafficService) {
     'use strict';
+
+    var trafficService = TrafficService;
 
     var linker = function (scope, element, attrs) {
         element
@@ -31,6 +33,13 @@ angular.module('ElGarabato.TruckBoard')
           truck.status = 'idle';
           truck.followed = false;
         };
+
+        truckController.showTruck = function(truck) {
+          console.log('Show truck:' + truck);
+          trafficService.centerTruck(truck);
+        };
+
+
     };
 
     return {
