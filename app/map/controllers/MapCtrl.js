@@ -1,18 +1,42 @@
 'use strict';
 
 angular.module('ElGarabato.Map')
-  .controller('MapCtrl', function ($scope, NgMap, TrafficService) {
+  .controller('MapCtrl', function ($scope, NgMap, TrafficService, PlacesService) {
 
     var service = this;
     service.zoom = 10;
     var trafficService = TrafficService;
+    var placesService = PlacesService;
 
     //service.home = new google.maps.LatLng(41.850033, -87.6500523);
     service.home = [37.665856, -4.951523];
+
     service.firm = {
       id: 'elgarabato-id',
       label: 'El garabato',
       coords: [37.665856, -4.951523]
+      //coords: {
+      //  longitude: 37.665856,
+      //  latutude: -4.951523
+      //}
+    };
+
+    service.getFarms = function() {
+      return placesService.getFarms();
+    };
+
+    service.getDestinations = function() {
+      return placesService.getDestinations();
+    };
+
+    service.showStaticPOI = function(obj) {
+      console.log('obj coords: ' + obj.coords);
+      var long = parseFloat(obj.coords.longitude);
+      var lat = parseFloat(obj.coords.latitude);
+      //var coords = [long, lat];
+      var coords = [37.862072, -4.763442];
+
+      service.map.panTo(service.home);
     };
 
     // service.createFirmMarker = function(firm) {
@@ -38,7 +62,7 @@ angular.module('ElGarabato.Map')
     service.moveToFirm = function() {
       console.log('moveToFirm button clicked.');
 
-      service.map.panTo(service.home);
+      service.showStaticPOI(service.firm);
     };
 
     service.zoomIn = function() {

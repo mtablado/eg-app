@@ -6,12 +6,25 @@
       <div class="btn-group">
         <button type="button" class="btn btn-default dropdown-toggle"
                 data-toggle="dropdown">
-          Clientes
+          Fincas
           <span class="caret"></span>
         </button>
         <ul class="dropdown-menu">
-          <li><a href="#" ng-click="egmap.moveToFirm()">Dafisa</a></li>
-          <li><a href="#" ng-click="egmap.moveToFirm()">Palacio Moratalla</a></li>
+          <li ng-repeat="farm in egmap.getFarms()">
+            <a href="#" ng-click="egmap.showStaticPOI(farm)">{{farm.name}}</a>
+          </li>
+        </ul>
+      </div>
+      <div class="btn-group">
+        <button type="button" class="btn btn-default dropdown-toggle"
+                data-toggle="dropdown">
+          Descargas
+          <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+          <li ng-repeat="destination in egmap.getDestinations()">
+            <a href="#" ng-click="egmap.showStaticPOI(destination)">{{destination.name}}</a>
+          </li>
         </ul>
       </div>
       <div class="btn-group">
@@ -39,22 +52,25 @@
   <br/>
   <!--{{map.zoom}}, {{map.getZoom()}},  {{map.getCenter()}}-->
   <div map-lazy-load="https://maps.google.com/maps/api/js">
-    <ng-map center="{{egmap.firm.coords}}" zoom="{{egmap.zoom}}">
-      <traffic-layer></traffic-layer>
-      <marker position="{{egmap.firm.coords}}" title="{{egmap.firm.label}}"/>
+    <ng-map center="{{egmap.home}}" zoom="{{egmap.zoom}}">
+      <!--traffic-layer></traffic-layer-->
+      <!-- El garabato-->
+      <marker position="[{{egmap.firm.coords[0]}}, {{egmap.firm.coords[1]}}]" title="{{egmap.firm.label}}"/>
       <custom-marker position="{{egmap.firm.coords}}">
         <div>
           <strong>{{egmap.firm.label}}</strong>
         </div>
       </custom-marker>
+
+      <!-- Fincas -->
+      <!-- Las marcas con la variable del ng-repeat vuelven el mapa inestable"-->
+      <!--marker ng-repeat"f in egmap.getFarms()" position="[{{f.coords[0]}}, {{f.coords[1]}}]" title="El Pireo" />
+      <custom-marker ng-repeat"f in egmap.getFarms()" position="[{{f.coords[0]}}, {{f.coords[1]}}]" >
+        <div>
+          <strong>Finca: {{f.name}}</strong>
+        </div>
+      </custom-marker-->
     </ng-map>
   </div>
-
-  <!--custom-marker ng-repeat="truck in map.trucks track by $index"
-        position="{{truck.pos}}">
-    <div>
-      position {{p.name}}: {{p.pos[0]}}, {{p.pos[1]}}
-    </div>
-  </custom-marker-->
 
 </div>
