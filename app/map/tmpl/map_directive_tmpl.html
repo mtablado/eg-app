@@ -1,8 +1,8 @@
-<div id="map_canvas" ng-controller="MapCtrl as map">
+<div id="map_canvas" ng-controller="MapCtrl as egmap">
 
   <div class="btn-toolbar" role="toolbar">
     <div class="btn-group" role="group">
-      <button ng-click="map.moveToFirm()" class="btn btn-default">El Garabato</button>
+      <button ng-click="egmap.moveToFirm()" class="btn btn-default">El Garabato</button>
       <div class="btn-group">
         <button type="button" class="btn btn-default dropdown-toggle"
                 data-toggle="dropdown">
@@ -10,8 +10,8 @@
           <span class="caret"></span>
         </button>
         <ul class="dropdown-menu">
-          <li><a href="#" ng-click="map.moveToFirm()">Dafisa</a></li>
-          <li><a href="#" ng-click="map.moveToFirm()">Palacio Moratalla</a></li>
+          <li><a href="#" ng-click="egmap.moveToFirm()">Dafisa</a></li>
+          <li><a href="#" ng-click="egmap.moveToFirm()">Palacio Moratalla</a></li>
         </ul>
       </div>
       <div class="btn-group">
@@ -21,33 +21,40 @@
           <span class="caret"></span>
         </button>
         <ul class="dropdown-menu">
-          <li><a href="#" ng-click="map.moveToFirm()">La Lagunilla</a></li>
-          <li><a href="#" ng-click="map.moveToFirm()">Repsol</a></li>
+          <li><a href="#" ng-click="egmap.moveToFirm()">La Lagunilla</a></li>
+          <li><a href="#" ng-click="egmap.moveToFirm()">Repsol</a></li>
         </ul>
       </div>
     </div>
     <div class="btn-group" role="group">
-      <button type="button" class="btn btn-default"
-          ng-click="map.zoomIn()">
+      <button type="button" class="btn btn-default" ng-click="egmap.zoomIn()">
         <span class="glyphicon glyphicon glyphicon-zoom-in"></span>
       </button>
-      <button type="button" class="btn btn-default"
-          ng-click="map.zoomOut()">
+      <button type="button" class="btn btn-default" ng-click="egmap.zoomOut()">
         <span class="glyphicon glyphicon glyphicon-zoom-out"></span>
       </button>
     </div>
   </div>
 
   <br/>
+  <!--{{map.zoom}}, {{map.getZoom()}},  {{map.getCenter()}}-->
+  <div map-lazy-load="https://maps.google.com/maps/api/js">
+    <ng-map center="{{egmap.firm.coords}}" zoom="{{egmap.zoom}}">
+      <traffic-layer></traffic-layer>
+      <marker position="{{egmap.firm.coords}}" title="{{egmap.firm.label}}"/>
+      <custom-marker position="{{egmap.firm.coords}}">
+        <div>
+          <strong>{{egmap.firm.label}}</strong>
+        </div>
+      </custom-marker>
+    </ng-map>
+  </div>
 
-  <ui-gmap-google-map center="map.center" zoom="map.zoom" options="map.options" control="gmapController">
+  <!--custom-marker ng-repeat="truck in map.trucks track by $index"
+        position="{{truck.pos}}">
+    <div>
+      position {{p.name}}: {{p.pos[0]}}, {{p.pos[1]}}
+    </div>
+  </custom-marker-->
 
-    <ui-gmap-layer type="TrafficLayer" show="map.showTraffic"></ui-gmap-layer>
-    <ui-gmap-layer namespace="weather" type="WeatherLayer" show="map.showWeather"></ui-gmap-layer>
-    <ui-gmap-layer namespace="visualization" type="HeatmapLayer" show="map.showHeat" onCreated="map.heatLayerCallback"></ui-gmap-layer>
-
-    <!--ui-gmap-marker coords="map.staticMarker.coords" options="map.staticMarker.options" idKey="map.staticMarker.id" >
-    </ui-gmap-marker-->
-    <ui-gmap-markers models="map.markers" coords="'coords'" options="'options'"></ui-gmap-markers>
-  </ui-gmap-google-map>
 </div>

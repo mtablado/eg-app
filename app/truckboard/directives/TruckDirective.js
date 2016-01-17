@@ -1,12 +1,14 @@
 angular.module('ElGarabato.TruckBoard')
   .directive('truck', function(){
+    'use strict';
+
     var linker = function (scope, element, attrs) {
         element
              .mouseover(function () {
                  element.css({ 'opacity': 0.9 });
              })
              .mouseout(function () {
-                 element.css({ 'opacity': 1.0 })
+                 element.css({ 'opacity': 1.0 });
              });
     };
 

@@ -7,7 +7,7 @@ var myModule = angular.module('ElGarabato', [
   'ngRoute',
   'ngSanitize',
   'ngTouch',
-  'uiGmapgoogle-maps',
+  'ngMap',
   'ElGarabato.Common',
   'ElGarabato.TrafficBoard',
   'ElGarabato.TruckBoard',
@@ -28,26 +28,14 @@ myModule.config(function($routeProvider) {
         controllerAs: 'about'
       })
       .when('/traffic', {
-        templateUrl: 'trafficboard/tmpl/trafficboard.html',
-        controller: 'TrafficBoardCtrl',
-        controllerAs: 'traffic'
+        templateUrl: 'trafficboard/tmpl/trafficboard.html'
       })
       .when('/truckboard', {
-        templateUrl: 'truckboard/tmpl/truckboard.html',
-        controller: 'TruckBoardCtrl',
-        controllerAs: 'truckboard'
+        templateUrl: 'truckboard/tmpl/truckboard.html'
       })
       .otherwise({
         redirectTo: '/'
       });
-});
-
-myModule.config(function(uiGmapGoogleMapApiProvider) {
-    uiGmapGoogleMapApiProvider.configure({
-        //    key: 'your api key',
-        v: '3.20', //defaults to latest 3.X anyhow
-        libraries: 'weather,geometry,visualization'
-    });
 });
 
 myModule.value('TRUCK_STATUSES', [

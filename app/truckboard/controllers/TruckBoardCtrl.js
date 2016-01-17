@@ -1,5 +1,6 @@
 angular.module('ElGarabato.TruckBoard')
   .controller('TruckBoardCtrl', function($scope, TRUCK_STATUSES, _TrucksModel_) {
+    'use strict';
 
     var truckboard = this;
     var TrucksModel = _TrucksModel_;
@@ -14,14 +15,4 @@ angular.module('ElGarabato.TruckBoard')
       return TrucksModel.all();
     };
 
-    truckboard.setDriver = function(truck, driver) {
-
-    };
-
-    truckboard.removeDriver = function(truck) {
-
-    };
-
-
-    console.log('trucks:' + truckboard.getTrucks());
   });

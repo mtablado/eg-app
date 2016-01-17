@@ -1,66 +1,60 @@
 'use strict';
 
 angular.module('ElGarabato.Map')
-  .controller('MapCtrl', function ($scope, _MarkerService_, uiGmapGoogleMapApi) {
+  .controller('MapCtrl', function ($scope, NgMap) {
 
     var service = this;
-    service.markerService = _MarkerService_;
+    service.zoom = 10;
 
-    $scope.gmapController = {};
-
-    $scope.firm = {
+    //service.home = new google.maps.LatLng(41.850033, -87.6500523);
+    service.home = [37.665856, -4.951523];
+    service.firm = {
       id: 'elgarabato-id',
       label: 'El garabato',
-      coords: {
-        latitude: 37.665856,
-        longitude: -4.951523
-      }
+      coords: [37.665856, -4.951523]
     };
 
-    service.createFirmMarker = function(firm) {
-      return this.markerService.createMarker(firm);
-    };
+    // service.createFirmMarker = function(firm) {
+    //   return this.markerService.createMarker(firm);
+    // };
+    //
+    // var firmMarker = service.createFirmMarker($scope.firm);
+    // console.log('Firm marker created:' + firmMarker);
 
-    var firmMarker = service.createFirmMarker($scope.firm);
-
-    $scope.map = {
-      center: { latitude: 37.665856, longitude: -4.951523 },
-      zoom: 12,
-      options: {scrollwheel: false},
-      markers: []
-    };
-
-    $scope.map.markers.push(firmMarker);
-    console.log('Marker:' + $scope.map.markers[0].options.label);
-
-    $scope.trucks = [];
-
-    uiGmapGoogleMapApi.then(function(maps) {
-      console.log('Map controller:' + maps.control);
+    NgMap.getMap().then(function(map) {
+      //map.center = ['37.665856', '-4.951523'];
+      map.zoom = service.zoom;
+      service.map = map;
+      service.home = map.getCenter();
+      console.log('Home:' + service.home);
     });
 
-    $scope.moveToFirm = function() {
-      console.log('moveToFirm button clicked.');
-      console.log('Map controller:' + $scope.gmapController);
+    //$scope.map.markers.push(firmMarker);
+    // console.log('Marker:' + $scope.map.markers[0].options.label);
 
-      $scope.gmapController.refresh({
-        latitude: $scope.firm.latitude,
-        longitude: $scope.firm.longitude
-      });
+    service.trucks = [];
+
+    service.moveToFirm = function() {
+      console.log('moveToFirm button clicked.');
+
+      service.map.panTo(service.home);
     };
 
-    /*var _firmMarker = {
-      id: 0,
-      coords: {
-        latitude: 37.665856,
-        longitude: -4.951523
-      },
-      options: { draggable: false,
-        labelClass:'marker-labels',
-        labelAnchor:'12 60',
-        labelContent:'El garabato ttes'
-      },
-    };*/
-    $scope.map.markers.push(firmMarker);
+    service.zoomIn = function() {
+      service.zoom++;
+      service.map.setZoom(service.zoom);
+      console.log('Updated zoom:' + service.zoom);
+    };
 
+    service.zoomOut = function() {
+      service.zoom--;
+    };
+
+    service.getCenter = function() {
+      return service.map.getCenter();
+    };
+
+    service.getZoom = function() {
+      return service.map.getZoom();
+    };
   });
