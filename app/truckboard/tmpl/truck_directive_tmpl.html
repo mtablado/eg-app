@@ -21,9 +21,14 @@
             <span class="hidden-sm-down hidden-xs hidden-sm">Ocultar</span>
           </button>
           <button type="button" class="btn btn-default btn-sm"
-              ng-show="{{truck.status == 'working' &amp;&amp; truck.followed == false
-                        || truck.status == 'idle'}}" class="ng-hide"
+              ng-show="{{truck.status == 'working' &amp;&amp; truck.followed == false}}" class="ng-hide"
               ng-click="truckController.switchFollow(truck)">
+            <span class="glyphicon glyphicon-ok"></span>
+            <span class="hidden-sm-down hidden-xs hidden-sm">Seguir</span>
+          </button>
+          <button type="button" class="btn btn-default btn-sm"
+              ng-show="{{truck.status == 'idle'}}" class="ng-hide"
+              ng-click="truckController.startWork(truck)">
             <span class="glyphicon glyphicon-ok"></span>
             <span class="hidden-sm-down hidden-xs hidden-sm">Seguir</span>
           </button>
