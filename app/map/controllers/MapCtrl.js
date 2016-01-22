@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('ElGarabato.Map')
-  .controller('MapCtrl', function ($scope, NgMap, TrafficService, PlacesService) {
+  .controller('MapCtrl', function ($scope, uiGmapGoogleMapApi, TrafficService, PlacesService) {
 
     var service = this;
     service.zoom = 10;
@@ -41,12 +41,23 @@ angular.module('ElGarabato.Map')
       service.map.panTo(service.home);
     };
 
-    NgMap.getMap().then(function(map) {
-      //map.center = ['37.665856', '-4.951523'];
-      map.zoom = service.zoom;
-      service.map = map;
-      service.home = map.getCenter();
-      console.log('Home:' + service.home);
+    // NgMap.getMap().then(function(map) {
+    //   //map.center = ['37.665856', '-4.951523'];
+    //   map.zoom = service.zoom;
+    //   service.map = map;
+    //   service.home = map.getCenter();
+    //   console.log('Home:' + service.home);
+    // });
+    //
+
+    // Do stuff with your $scope.
+    // Note: Some of the directives require at least something to be defined originally!
+    // e.g. $scope.markers = []
+
+    // uiGmapGoogleMapApi is a promise.
+    // The "then" callback function provides the google.maps object.
+    uiGmapGoogleMapApi.then(function(maps) {
+      service.map = {center: {latitude: 51.219053, longitude: 4.404418 }, zoom: 14 };
     });
 
     service.trucks = [];
