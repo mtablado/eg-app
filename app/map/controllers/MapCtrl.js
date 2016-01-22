@@ -25,6 +25,8 @@ angular.module('ElGarabato.Map')
       return placesService.getFarms();
     };
 
+    service.granjas = placesService.getFarms();
+
     service.getDestinations = function() {
       return placesService.getDestinations();
     };
@@ -39,13 +41,6 @@ angular.module('ElGarabato.Map')
       service.map.panTo(service.home);
     };
 
-    // service.createFirmMarker = function(firm) {
-    //   return this.markerService.createMarker(firm);
-    // };
-    //
-    // var firmMarker = service.createFirmMarker($scope.firm);
-    // console.log('Firm marker created:' + firmMarker);
-
     NgMap.getMap().then(function(map) {
       //map.center = ['37.665856', '-4.951523'];
       map.zoom = service.zoom;
@@ -53,9 +48,6 @@ angular.module('ElGarabato.Map')
       service.home = map.getCenter();
       console.log('Home:' + service.home);
     });
-
-    //$scope.map.markers.push(firmMarker);
-    // console.log('Marker:' + $scope.map.markers[0].options.label);
 
     service.trucks = [];
 

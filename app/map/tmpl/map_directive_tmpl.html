@@ -52,7 +52,7 @@
   <br/>
   <!--{{map.zoom}}, {{map.getZoom()}},  {{map.getCenter()}}-->
   <div map-lazy-load="https://maps.google.com/maps/api/js">
-    <ng-map center="{{egmap.home}}" zoom="{{egmap.zoom}}">
+    <ng-map center="14100 La Carlota" zoom="{{egmap.zoom}}">
       <!--traffic-layer></traffic-layer-->
       <!-- El garabato-->
       <marker position="[{{egmap.firm.coords[0]}}, {{egmap.firm.coords[1]}}]" title="{{egmap.firm.label}}"/>
@@ -64,8 +64,8 @@
 
       <!-- Fincas -->
       <!-- Las marcas con la variable del ng-repeat vuelven el mapa inestable"-->
-      <!--marker ng-repeat"f in egmap.getFarms()" position="[{{f.coords[0]}}, {{f.coords[1]}}]" title="El Pireo" />
-      <custom-marker ng-repeat"f in egmap.getFarms()" position="[{{f.coords[0]}}, {{f.coords[1]}}]" >
+      <!--marker ng-repeat"f in egmap.getFarms()" position="14100 La Carlota" title="El Pireo" /-->
+      <custom-marker ng-repeat"f in egmap.granjas" position="14100 La Carlota" >
         <div>
           <strong>Finca: {{f.name}}</strong>
         </div>
