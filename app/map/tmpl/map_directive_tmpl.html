@@ -51,7 +51,20 @@
 
   <br/>
 
-  <ui-gmap-google-map center="map.center" zoom="map.zoom" options="options">
+  <ui-gmap-google-map center="egmap.map.center" zoom="egmap.map.zoom">
+    <ui-gmap-marker idKey='egmap.getFirmMarker().id'
+        coords='egmap.getFirmMarker().coords'
+        options='egmap.getFirmMarker().options'>
+    </ui-gmap-marker>
+
+    <!-- Farms -->
+
+    <ui-gmap-markers
+            models='egmap.getFarmsMarkers().models'
+            idKey='id'
+            coords="'coords'"
+            options="'options'">
+    </ui-gmap-markers>
   </ui-gmap-google-map>
 
 </div>

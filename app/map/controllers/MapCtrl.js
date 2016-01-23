@@ -1,31 +1,39 @@
 'use strict';
 
 angular.module('ElGarabato.Map')
-  .controller('MapCtrl', function ($scope, uiGmapGoogleMapApi, TrafficService, PlacesService) {
+  .controller('MapCtrl', function ($scope, uiGmapGoogleMapApi, MarkerService, TrafficService, PlacesService) {
 
     var service = this;
     service.zoom = 10;
     var trafficService = TrafficService;
     var placesService = PlacesService;
-
-    //service.home = new google.maps.LatLng(41.850033, -87.6500523);
-    service.home = [37.665856, -4.951523];
+    var markerService = MarkerService;
 
     service.firm = {
       id: 'elgarabato-id',
-      label: 'El garabato',
-      coords: [37.665856, -4.951523]
-      //coords: {
-      //  longitude: 37.665856,
-      //  latutude: -4.951523
-      //}
+      name: 'El garabato',
+      coords: {
+       latitude: 37.665856,
+       longitude: -4.951523
+      }
     };
+
+    var firmMarker = markerService.createMarker(service.firm);
+    service.getFirmMarker = function() {
+      return firmMarker;
+    };
+
+    var farms = placesService.getFarms();
+
+    var farmsMarkers = markerService.createMarkers('places', farms);
 
     service.getFarms = function() {
-      return placesService.getFarms();
+      return farms;
     };
 
-    service.granjas = placesService.getFarms();
+    service.getFarmsMarkers = function() {
+      return farmsMarkers;
+    };
 
     service.getDestinations = function() {
       return placesService.getDestinations();
@@ -33,22 +41,15 @@ angular.module('ElGarabato.Map')
 
     service.showStaticPOI = function(obj) {
       console.log('obj coords: ' + obj.coords);
-      var long = parseFloat(obj.coords.longitude);
-      var lat = parseFloat(obj.coords.latitude);
-      //var coords = [long, lat];
-      var coords = [37.862072, -4.763442];
-
-      service.map.panTo(service.home);
     };
 
-    // NgMap.getMap().then(function(map) {
-    //   //map.center = ['37.665856', '-4.951523'];
-    //   map.zoom = service.zoom;
-    //   service.map = map;
-    //   service.home = map.getCenter();
-    //   console.log('Home:' + service.home);
-    // });
-    //
+    service.map = {
+      center: {
+        latitude: service.firm.coords.latitude,
+        longitude: service.firm.coords.longitude
+      },
+      zoom: 12
+    };
 
     // Do stuff with your $scope.
     // Note: Some of the directives require at least something to be defined originally!
@@ -57,7 +58,7 @@ angular.module('ElGarabato.Map')
     // uiGmapGoogleMapApi is a promise.
     // The "then" callback function provides the google.maps object.
     uiGmapGoogleMapApi.then(function(maps) {
-      service.map = {center: {latitude: 51.219053, longitude: 4.404418 }, zoom: 14 };
+      console.log('Google maps initialized:' + maps);
     });
 
     service.trucks = [];

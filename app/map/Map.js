@@ -1,1 +1,1 @@
-angular.module('ElGarabato.Map', ['ElGarabato.Common']);
+angular.module('ElGarabato.Map', ['ElGarabato.Common', 'uiGmapgoogle-maps']);

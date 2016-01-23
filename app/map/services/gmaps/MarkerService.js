@@ -3,21 +3,41 @@
 angular.module('ElGarabato.Map')
   .service('MarkerService', function () {
 
-      this.createMarker = function(obj) {
-        var marker = {
-          id: obj.id,
-    			options: {
-    				labelAnchor:'12 60',
-    				labelClass:'marker-labels',
-            labelContent: obj.label,
-            draggable: false
-    			},
-          coords: {
-      			latitude: obj.coords.latitude,
-      			longitude: obj.coords.longitude
-          }
-    		};
+    var markerService = this;
 
-        return marker;
+    markerService.createMarker = function(obj) {
+      var marker = {
+        id: obj.id,
+  			options: {
+  				labelAnchor:'12 60',
+  				labelClass:'marker-labels',
+          labelContent: obj.name,
+          draggable: false
+  			},
+        coords: obj.coords
+  		};
+
+      return marker;
+    };
+
+    markerService.createMarkers = function(id, arrayObject) {
+      // if (!Array.isArray(arrayObject)) {
+      //   console.log('');
+      // }
+
+      var markersArray = [];
+      for	(var index = 0; index < arrayObject.length; index++) {
+        var marker = this.createMarker(arrayObject[index]);
+        markersArray.push(marker);
+      }
+
+      var markers = {
+        models: markersArray,
+        id: id
       };
+
+      return markers;
+    };
+
+
   });

@@ -7,49 +7,85 @@ angular.module('ElGarabato.Common')
 
             var farms = [
               {
+                id: '1',
                 name: 'La Reina',
                 type: 'farm',
-                coords: [37.831369, -4.868883]
+                coords: {
+                 latitude: 37.831369,
+                 longitude: -4.868883
+                }
               },
               {
+                id: '2',
                 name: 'Judio',
                 type: 'farm',
-                coords: [37.862072, -4.763442]
+                coords: {
+                 latitude: 37.862072,
+                 longitude: -4.763442
+                }
               },
               {
+                id: '3',
                 name: 'Judío',
                 type: 'farm',
-                coords: [37.862072, -4.763442]
+                coords: {
+                 latitude: 37.862072,
+                 longitude: -4.763442
+                }
               },
               {
+                id: '4',
                 name: 'Torre Mocha',
                 type: 'farm',
-                coords: [37.850744, -4.736397]
+                coords: {
+                 latitude: 37.850744,
+                 longitude: -4.736397
+                }
               },
               {
+                id: '5',
                 name: 'Estebanias',
                 type: 'farm',
-                coords: [37.858481, -4.756415]
+                coords: {
+                 latitude: 37.858481,
+                 longitude: -4.756415
+                }
               },
               {
+                id: '6',
                 name: 'Doña Sol',
                 type: 'farm',
-                coords: [37.869059, -4.738757]
+                coords: {
+                 latitude: 37.869059,
+                 longitude: -4.738757
+                }
               },
               {
+                id: '7',
                 name: 'El Pireo',
                 type: 'farm',
-                coords: [37.869991, 37.869991]
+                coords: {
+                 latitude: 37.869991,
+                 longitude: 37.869991
+                }
               },
               {
+                id: '8',
                 name: 'La Morena',
                 type: 'farm',
-                coords: [37.869935, -4.724167]
+                coords: {
+                 latitude: 37.869935,
+                 longitude: -4.724167
+                }
               },
               {
+                id: '9',
                 name: 'El Rubio',
                 type: 'farm',
-                coords: [37.871426, -4.723824]
+                coords: {
+                 latitude: 37.871426,
+                 longitude: -4.723824
+                }
               }];
 
               var destinations = [

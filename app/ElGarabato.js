@@ -38,6 +38,7 @@ myModule.config(function($routeProvider) {
       });
 });
 
+// TODO ¿Enviar a directiva?
 myModule.config(function(uiGmapGoogleMapApiProvider) {
     uiGmapGoogleMapApiProvider.configure({
         //    key: 'your api key',
