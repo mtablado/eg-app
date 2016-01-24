@@ -12,13 +12,17 @@ angular.module('ElGarabato.Map')
   				labelAnchor:'12 60',
   				labelClass:'marker-labels',
           labelContent: obj.name,
-          draggable: false,
-          icon: 'app/elgarabato/images/truck-icon-9704.png'
+          draggable: false
   			},
         coords: obj.coords
   		};
 
       return marker;
+    };
+
+    markerService.createTruckMarker = function(obj) {
+      var marker = this.createMarker(obj);
+      marker.options.icon = 'images/delivery13-24px.png';
     };
 
     markerService.createMarkers = function(id, arrayObject) {
