@@ -18,7 +18,7 @@ angular.module('ElGarabato.Map')
       }
     };
 
-    var firmMarker = markerService.createMarker(service.firm);
+    var firmMarker = markerService.createFirmMarker(service.firm);
     service.getFirmMarker = function() {
       return firmMarker;
     };
