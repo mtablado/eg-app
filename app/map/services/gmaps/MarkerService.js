@@ -44,17 +44,26 @@ angular.module('ElGarabato.Map')
       return marker;
     };
 
-    markerService.createMarkers = function(id, arrayObject) {
-      // if (!Array.isArray(arrayObject)) {
-      //   console.log('');
-      // }
+    markerService.createDestinationMarkers = function(arrayObject) {
+      var markersArray = [];
+      for	(var index = 0; index < arrayObject.length; index++) {
+        var marker = this.createDestinationMarker(arrayObject[index]);
+        markersArray.push(marker);
+      }
+      return markerService.createMarkers('destinations', markersArray);
+    };
 
+    markerService.createFarmsMarkers = function(arrayObject) {
       var markersArray = [];
       for	(var index = 0; index < arrayObject.length; index++) {
         var marker = this.createFarmMarker(arrayObject[index]);
         markersArray.push(marker);
       }
+      return markerService.createMarkers('places', markersArray);
 
+    };
+
+    markerService.createMarkers = function(id, markersArray) {
       var markers = {
         models: markersArray,
         id: id

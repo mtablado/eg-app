@@ -24,8 +24,7 @@ angular.module('ElGarabato.Map')
     };
 
     var farms = placesService.getFarms();
-
-    var farmsMarkers = markerService.createMarkers('places', farms);
+    var farmsMarkers = markerService.createFarmsMarkers(farms);
 
     service.getFarms = function() {
       return farms;
@@ -35,8 +34,16 @@ angular.module('ElGarabato.Map')
       return farmsMarkers;
     };
 
+    var destinations = placesService.getDestinations();
+    var destinationMarkers =
+      markerService.createDestinationMarkers(destinations);
+
     service.getDestinations = function() {
       return placesService.getDestinations();
+    };
+
+    service.getDestinationsMarkers = function() {
+      return destinationMarkers;
     };
 
     service.showStaticPOI = function(obj) {

@@ -58,9 +58,16 @@
     </ui-gmap-marker>
 
     <!-- Farms -->
-
     <ui-gmap-markers
             models='egmap.getFarmsMarkers().models'
+            idKey='id'
+            coords="'coords'"
+            options="'options'">
+    </ui-gmap-markers>
+
+    <!-- Destinations -->
+    <ui-gmap-markers
+            models='egmap.getDestinationsMarkers().models'
             idKey='id'
             coords="'coords'"
             options="'options'">

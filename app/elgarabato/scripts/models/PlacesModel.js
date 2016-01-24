@@ -90,39 +90,67 @@ angular.module('ElGarabato.Common')
 
               var destinations = [
                 {
+                  id: '1',
                   name: 'Dafisa',
                   type: 'destination',
-                  coords: [37.869935, -4.724167] // TODO grab coords
+                  coords: {
+                   latitude: 37.869935,
+                   longitude: -4.724167 // TODO grab coords
+                 }
                 },
                 {
+                  id: '2',
                   name: 'San Antonio',
                   type: 'destination',
-                  coords: [37.530031, -5.124284]
+                  coords: {
+                   latitude: 37.530031,
+                   longitude: -5.124284
+                 }
                 },
                 {
+                  id: '3',
                   name: 'Cerelales Astigi',
                   type: 'destination',
-                  coords: [37.524859, -5.117170]
+                  coords: {
+                   latitude: 37.524859,
+                   longitude: -5.117170
+                 }
                 },
                 {
+                  id: '4',
                   name: 'Pastas Gallo',
                   type: 'destination',
-                  coords: [37.939533, -4.485241]
+                  coords: {
+                   latitude: 37.939533,
+                   longitude: -4.485241
+                 }
                 },
                 {
+                  id: '5',
                   name: 'Puerto Sevilla',
                   type: 'destination',
-                  coords: [37.367697, -5.993828]
+                  coords: {
+                   latitude: 37.367697,
+                   longitude: -5.993828
+                 }
                 },
                 {
+                  id: '6',
                   name: 'Puerto Málaga',
                   type: 'destination',
-                  coords: [36.710556, -4.423616]
+                  coords: {
+                   latitude: 36.710556,
+                   longitude: -4.423616
+                 }
                 },
                 {
+                  id: '7',
                   name: 'Koipe',
                   type: 'destination',
-                  coords: [37.932390, -4.675054]
+                  coords: {
+                   latitude: 37.932390,
+                   longitude: -4.675054
+                 }
                 }];
 
               service.getFarms = function() {
