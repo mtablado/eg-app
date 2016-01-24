@@ -85,7 +85,7 @@ module.exports = function (grunt) {
         files: [
           '<%= yeoman.app %>/**/*.html',
           '.tmp/styles/**/*.css',
-          '<%= yeoman.app %>/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}'
+          '<%= yeoman.app %>/**/*.{png,jpg,jpeg,gif,webp,svg}'
         ]
       }
     },
@@ -357,8 +357,8 @@ module.exports = function (grunt) {
       dist: {
         files: [{
           expand: true,
-          cwd: '<%= yeoman.app %>/images',
-          src: '{,*/}*.{png,jpg,jpeg,gif}',
+          cwd: '<%= yeoman.app %>/elgarabato/images',
+          src: '**/*.{png,jpg,jpeg,gif}',
           dest: '<%= yeoman.dist %>/images'
         }]
       }

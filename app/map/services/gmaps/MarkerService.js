@@ -12,7 +12,8 @@ angular.module('ElGarabato.Map')
   				labelAnchor:'12 60',
   				labelClass:'marker-labels',
           labelContent: obj.name,
-          draggable: false
+          draggable: false,
+          icon: 'app/elgarabato/images/truck-icon-9704.png'
   			},
         coords: obj.coords
   		};
