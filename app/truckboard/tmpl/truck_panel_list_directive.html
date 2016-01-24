@@ -1,7 +1,7 @@
 <div>
   <div class="panel panel-default">
     <div class="panel-heading">
-        <span class="glyphicons glyphicons-truck"></span><h2 class="panel-title">Camiones en seguimiento</h2>
+      <h2 class="panel-title"><img src="images/delivery13-24px.png"> Camiones en seguimiento</h2>
     </div>
     <!--div class="panel-body">
       <p>Si incluyes dentro de un panel cualquier tabla sin borde y con la clase .table, sus contenidos se adaptarán perfectamente al panel. Si además existe un elemento con la clase .panel-body, se añade un borde en la parte superior ed la tabla para mejorar su</p>
@@ -11,14 +11,14 @@
   </div>
   <div class="panel panel-default">
     <div class="panel-heading">
-        <span class="glyphicons glyphicons-truck"></span><h2 class="panel-title">Camiones trabajando</h2>
+      <h2 class="panel-title"><img src="images/delivery13-24px.png"> Camiones trabajando</h2>
     </div>
     <ul truck class="list-group" ng-repeat="truck in trucks | filter: {status: 'working', followed: 'false'}">
     </ul>
   </div>
   <div class="panel panel-default">
     <div class="panel-heading">
-        <span class="glyphicon glyphicon glyphicon-truck"></span><h2 class="panel-title">Camiones parados</h2>
+      <h2 class="panel-title"><img src="images/delivery13-24px.png"> Camiones parados</h2>
     </div>
     <ul truck class="list-group" ng-repeat="truck in trucks | filter: {status: 'idle'}">
     </ul>
