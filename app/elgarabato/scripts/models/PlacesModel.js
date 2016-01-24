@@ -94,8 +94,8 @@ angular.module('ElGarabato.Common')
                   name: 'Dafisa',
                   type: 'destination',
                   coords: {
-                   latitude: 37.869935,
-                   longitude: -4.724167 // TODO grab coords
+                   latitude: 37.663890,
+                   longitude: -4.953118
                  }
                 },
                 {
