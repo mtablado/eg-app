@@ -1,8 +1,10 @@
 angular.module('ElGarabato.Common')
     .service('PlacesModel',
-        function ($http, UtilsService) {
+        function ($http, _UtilsService_) {
           'use strict';
           var service = this;
+          var http = $http;
+          var utilsService = _UtilsService_;
           //var MODEL = '/places/';
 
             var farms = [

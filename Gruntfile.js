@@ -68,7 +68,7 @@ module.exports = function (grunt) {
         }
       },
       jsTest: {
-        files: ['test/spec/**/*.js'],
+        files: ['app//**/*.spec.js'],
         tasks: ['newer:jshint:test', 'newer:jscs:test', 'karma']
       },
       compass: {
@@ -157,7 +157,7 @@ module.exports = function (grunt) {
         options: {
           jshintrc: 'test/.jshintrc'
         },
-        src: ['test/spec/**/*.js']
+        src: ['app/**/*.spec.js']
       }
     },
 
